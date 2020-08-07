@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Game.cpp \
+    Movable.cpp \
     main.cpp
 
 HEADERS += \
-    Game.h
+    Game.h \
+    Movable.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
