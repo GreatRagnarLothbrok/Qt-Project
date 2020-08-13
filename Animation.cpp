@@ -1,21 +1,20 @@
 #include "Animation.h"
 #include <QObject>
 Animation::Animation():
-    Movable(50), QGraphicsPixmapItem()
+    Movable(10), QGraphicsPixmapItem(), animationTimer(new QTimer)
 {
 
     pictureIndex = 0;
     if (!motionPictures.empty())
         setPixmap(motionPictures[pictureIndex]);
-    animationTimer = new QTimer;
-    animationTimer->start(46);
-    QObject::connect(animationTimer,SIGNAL(timeout()),this,SLOT(animate()));
 }
 
 Animation::~Animation()
 {
     delete animationTimer;
 }
+
+
 
 void Animation::setPicsList(const QList<QPixmap> &pics)
 {
@@ -27,6 +26,23 @@ void Animation::setPicsList(const QList<QPixmap> &pics)
     pictureIndex = 0;
     animationTimer->start();
 }
+
+void Animation::startAnimate()
+{
+    if(!animationTimer->isActive()) {
+        animationTimer->start(50);
+        QObject::connect(animationTimer,SIGNAL(timeout()),this,SLOT(animate()));
+    }
+}
+
+void Animation::stopAnimate()
+{
+    if(animationTimer->isActive()) {
+        animationTimer->stop();
+        QObject::disconnect(animationTimer,SIGNAL(timeout()),this,SLOT(animate()));
+    }
+}
+
 
 
 

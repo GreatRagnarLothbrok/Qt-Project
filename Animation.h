@@ -14,9 +14,11 @@ public:
     ~Animation();
 protected:
     void setPicsList(const QList<QPixmap>& pics);
+    void startAnimate();
+    void stopAnimate();
+    QTimer * animationTimer;
 private:
     QList<QPixmap> motionPictures;
-    QTimer * animationTimer;
     int pictureIndex;
 public slots:
     void animate();

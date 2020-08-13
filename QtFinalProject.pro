@@ -17,16 +17,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Animation.cpp \
-    Game.cpp \
+    Controller.cpp \
     Movable.cpp \
+    View.cpp \
+    Zombie.cpp \
     main.cpp
 
 HEADERS += \
     Animation.h \
-    Game.h \
-    Movable.h
+    Controller.h \
+    Movable.h \
+    View.h \
+    Zombie.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    Resources.qrc

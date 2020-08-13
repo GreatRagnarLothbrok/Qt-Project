@@ -1,11 +1,11 @@
-#include "Game.h"
+#include "View.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    auto game = new Game;
-    game->show();
+    auto view = new View;
+    view->show();
     return a.exec();
 }
